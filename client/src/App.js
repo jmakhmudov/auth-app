@@ -11,7 +11,7 @@ Parse.serverURL = PARSE_HOST_URL;
 
 function App() {
   async function addPerson() {
-    try {
+    try {z
       // create a new Parse Object instance
       const Person = new Parse.Object('Person');
       // define the attributes you want for your Object
