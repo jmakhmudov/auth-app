@@ -1,0 +1,22 @@
+.App {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    padding: 20px;
+}
+
+.login-box {
+    width: 350px;
+}
+
+.login-box h1 {
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.form-text span {
+    cursor: pointer;
+    color: rgb(48, 92, 238);
+}
