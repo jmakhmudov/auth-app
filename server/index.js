@@ -7,13 +7,18 @@ const PORT = 5000
 app.use(cors())
 app.use(express.json())
 
-const db = mySql.createPool("CREATE USER 'root'@'containers-us-west-115.railway.app' IDENTIFIED WITH mysql_native_password BY '9t4stuzuBjGVCFGg7wsf';")
-
+const db = mySql.createPool({
+  host: "containers-us-west-115.railway.app",
+  user: "root",
+  password: "9t4stuzuBjGVCFGg7wsf",
+  database: "railway",
+  port: "6166"
+})
 
 app.get('/api/insert', (req, res) => {
   db.query("select * from users", (err, result) => {
-    console.log(err)
-    res.send("insert")
+    console.log(result)
+    res.send(result)
   })
 })
 
