@@ -15,7 +15,7 @@ const db = mySql.createPool({
   port: "6166"
 })
 
-app.get('/api/insert', (req, res) => {
+app.get('/', (req, res) => {
   db.query("select * from users", (err, result) => {
     console.log(result)
     res.send(result)
