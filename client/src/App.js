@@ -4,7 +4,7 @@ import Login from "./components/Login"
 import axios from 'axios'
 
 function App() {
-  axios.get('https://server-production-8787.up.railway.app/').then(resp => {
+  axios.get('https://server-production-8787.up.railway.app/api/get').then(resp => {
     console.log(resp.data);
   });
   
