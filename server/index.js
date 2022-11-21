@@ -1,4 +1,5 @@
 const express = require("express")
+const bodyParser = require("body-parser")
 const cors = require("cors")
 const app = express()
 const mySql = require("mysql")
@@ -13,6 +14,15 @@ const db = mySql.createPool({
   password: "9t4stuzuBjGVCFGg7wsf",
   database: "railway",
   port: "6166"
+})
+
+app.post('/api/insert', (req, res) => {
+  const u = req.body.userData
+  const i = "INSERT INTO users (name, email, password) VALUES (?,?,?)"
+
+  db.query(i, [u.name, u.email, u.password], (err, result) => {
+    console.log(result)
+  })
 })
 
 app.get('/api/get', (req, res) => {

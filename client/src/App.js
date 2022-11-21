@@ -1,17 +1,24 @@
 import React from "react"
 import './styles/App.css'
 import Login from "./components/Login"
-import axios from 'axios'
+import SignUp from "./components/SignUp"
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
 
 function App() {
-  axios.get('https://server-production-8787.up.railway.app/api/get').then(resp => {
-    console.log(resp.data);
-  });
   
   return (
-    <div className="App">
-      <Login/>
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<Login />}/>
+          <Route path="/signup" element={<SignUp />}/>
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
