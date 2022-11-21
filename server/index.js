@@ -18,9 +18,8 @@ const db = mySql.createPool({
 
 app.post('/api/insert', (req, res) => {
   const u = req.body.userData
-  const i = "INSERT INTO users (name, email, password) VALUES (?,?,?)"
-  console.log(u)
-  console.log(u.name)
+  const i = "INSERT INTO users (name, email, password,regDate, lastDate, status) VALUES (?,?,?,'20.11.2022','20.11.2022');"
+
   db.query(i, [u.name, u.email, u.password], (err, result) => {
     console.log(err)
   })

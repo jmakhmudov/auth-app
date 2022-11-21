@@ -14,7 +14,7 @@ const SignUp = () => {
     const signin = () => {
         navigate("/")
         axios.post('https://server-production-8787.up.railway.app/api/insert', 
-        userData).then(() => {
+        {userData}).then(() => {
             alert("Succesfully signed up!")
         })
     }
