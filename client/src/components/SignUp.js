@@ -12,6 +12,14 @@ const SignUp = () => {
     })
 
     const signin = () => {
+        axios.get('https://server-production-8787.up.railway.app/api/get').then(resp => {
+           resp.data.some(
+            e => e.email === userData.email) 
+           ? console.log("this email is already in use")
+           : console.log("free")
+        }).catch(e => {
+            console.log(e);
+        })
         navigate("/")
         axios.post('https://server-production-8787.up.railway.app/api/insert', 
         {userData}).then(() => {
