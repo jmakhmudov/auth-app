@@ -11,18 +11,28 @@ const SignUp = () => {
         regDate: ''
     })
 
+    const showAlert = (error) => {
+        const alert = document.getElementById("alert")
+        alert.style.display = "block"
+        if (error === "email") {
+            alert.innerText = "This email is already in use!"
+        } else if (error === "blank") {
+            alert.innerText = "Fill blank fields!"
+        }
+    }
+
     const sendData = (date) => {
         navigate("/")
         axios.post('https://server-production-8787.up.railway.app/api/insert', 
         {userData, date}).then(() => {
-            alert("Succesfully signed up!")
+            window.alert("Succesfully signed up!")
         })
     }
 
     const checkEmail =() => {
         axios.get('https://server-production-8787.up.railway.app/api/get').then(resp => {
             if (resp.data.some(el => el.email === userData.email)) {
-                window.alert("This email is already in use!")
+                showAlert("email")
             } else {
                 var today = new Date(),
                 date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
@@ -35,14 +45,11 @@ const SignUp = () => {
         if (userData.name === '' ||
             userData.email === '' ||
             userData.password === '') {
-            console.log("error")
+            showAlert("blank")
         }
         else {
             checkEmail()
-        }
-        //checkEmail()
-        
-        
+        }        
     }
 
     const onChange = (element, value) => {
@@ -57,6 +64,9 @@ const SignUp = () => {
     return (
         <div className="signup-box">
             <h1>Sign Up</h1>
+            <div style={{display:'none'}} id="alert" className="alert alert-danger" role="alert">
+                ...
+            </div>
             <form>
                 <div className="form-group row">
                     <div className="col">
