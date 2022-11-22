@@ -26,7 +26,7 @@ const SignUp = () => {
             } else {
                 setUserData(prevData => {
                     var current = new Date(),
-                    date =  `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
+                    date =  `${current.getDate()}.${current.getMonth()+1}.${current.getFullYear()}`;
                     return {
                         ...prevData,
                         regDate: date
