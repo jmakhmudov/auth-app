@@ -9,11 +9,11 @@ app.use(cors())
 app.use(express.json())
 
 const db = mySql.createPool({
-  host: process.env.MYSQL_HOST,
-  user: process.env.MYSQL_USER,
-  password: process.env.MYSQL_PASSWORD,
-  database: process.env.MYSQL_DATABASE,
-  port: process.env.MYSQL_PORT
+  host: "containers-us-west-115.railway.app",
+  user: "root",
+  password: "9t4stuzuBjGVCFGg7wsf",
+  database: "railway",
+  port: "6166"
 })
 
 app.post('/api/delete', (req, res) => {
