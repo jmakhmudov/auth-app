@@ -11,10 +11,10 @@ const SignUp = () => {
         regDate: ''
     })
 
-    const sendData = () => {
+    const sendData = (date) => {
         navigate("/")
         axios.post('https://server-production-8787.up.railway.app/api/insert', 
-        {userData}).then(() => {
+        {userData, date}).then(() => {
             alert("Succesfully signed up!")
         })
     }
@@ -24,16 +24,8 @@ const SignUp = () => {
             if (resp.data.some(el => el.email === userData.email)) {
                 window.alert("This email is already in use!")
             } else {
-                setUserData(prevData => {
-                    var current = new Date(),
-                    date =  `${current.getDate()}.${current.getMonth()+1}.${current.getFullYear()}`;
-                    return {
-                        ...prevData,
-                        regDate: date
-                    }
-                })
-                console.log(userData.regDate)
-                sendData()
+                var date = new Date().toLocaleString()
+                sendData(date)
             }
         })
     }
