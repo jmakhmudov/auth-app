@@ -24,7 +24,8 @@ const SignUp = () => {
             if (resp.data.some(el => el.email === userData.email)) {
                 window.alert("This email is already in use!")
             } else {
-                var date = new Date().toLocaleString()
+                var today = new Date(),
+                date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
                 sendData(date)
             }
         })
