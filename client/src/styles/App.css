@@ -21,3 +21,7 @@
     cursor: pointer;
     color: rgb(48, 92, 238);
 }
+
+.table {
+    width: 1000px;
+}
