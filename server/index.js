@@ -22,7 +22,7 @@ app.post('/api/update', (req, res) => {
   const c2 = req.body.col2
   const v = req.body.val
   const v2 = req.body.val2
-  const u = `update users set ${c}=${v} and ${c2}=${v2} where id =${id}`
+  const u = `update users set ${c}='${v}' and ${c2}='${v2}' where id =${id}`
 
   db.query(u, (err, result) => {
     console.log(err)
