@@ -8,14 +8,14 @@ const Login = () => {
     const [enter, setEnter] = React.useState(false)
     const [email, setEmail] = React.useState('')
     const [password, setPassword] = React.useState('')
-    const [id, setId] = React.useState(10)
+    const id = 0
 
     const login = () => {
         
         axios.get('https://server-production-8787.up.railway.app/api/get').then(resp => {
            resp.data.some(
             e => {
-                setId(e.id)
+                id = e.id
                 return (
                 e.email === email && 
                 e.password === password && 
