@@ -8,12 +8,19 @@ const Login = () => {
     const [enter, setEnter] = React.useState(false)
     const [email, setEmail] = React.useState('')
     const [password, setPassword] = React.useState('')
+    const [id, setId] = React.useState(10)
 
     const login = () => {
+        
         axios.get('https://server-production-8787.up.railway.app/api/get').then(resp => {
            resp.data.some(
-            e => e.email === email && 
-            e.password === password && e.blocked !== '1') 
+            e => {
+                setId(e.id)
+                return (
+                e.email === email && 
+                e.password === password && 
+                e.blocked !== '1' )
+            }) 
            ? getDateTime()
            : showAlert("login")
         }).catch(e => {
@@ -25,7 +32,7 @@ const Login = () => {
         const current = new Date();
         const date = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`;
         const time = `${current.getHours()}:${current.getMinutes()}`
-        logingIn(date, time)
+        logingIn(date, time, id)
     }
 
     const logingIn = (date, time) => {
