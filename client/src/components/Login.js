@@ -13,7 +13,7 @@ const Login = () => {
         axios.get('https://server-production-8787.up.railway.app/api/get').then(resp => {
            resp.data.some(
             e => e.email === email && 
-            e.password === password) 
+            e.password === password && e.blocked !== '1') 
            ? setEnter(true)
            : showAlert("login")
         }).catch(e => {
@@ -25,7 +25,7 @@ const Login = () => {
         const alert = document.getElementById("alert")
         alert.style.display = "block"
         if (error === "login") {
-            alert.innerText = "Incorrect email or password!"
+            alert.innerText = "Incorrect email or password! Or your account is blocked :("
         }
     }
 

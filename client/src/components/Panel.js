@@ -36,7 +36,7 @@ const Panel = () => {
                                 <td>{user.email}</td>
                                 <td>{user.regDate}, {user.regTime}</td>
                                 <td>{user.loginDate}, {user.loginTime}</td>
-                                <td>{user.status ? "blocked" : "not blocked"}</td>
+                                <td>{user.blocked==='1' ? "Blocked" : "Unblocked"}</td>
                             </tr>
                         )
                     })}

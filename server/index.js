@@ -16,6 +16,16 @@ const db = mySql.createPool({
   port: "6166"
 })
 
+app.get('/api/update', (req, res) => {
+  const c = req.body.col
+  const v = req.body.val
+  const u = `update users set ${c}=${val}`
+
+  db.query(u, (err, result) => {
+    console.log(err)
+  })
+})
+
 app.post('/api/delete', (req, res) => {
   const id = req.body.id
   const d = "DELETE FROM users WHERE id=?;"
