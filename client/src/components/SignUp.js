@@ -7,8 +7,7 @@ const SignUp = () => {
     const [userData, setUserData] = React.useState({
         name: '',
         email: '',
-        password: '',
-        regDate: ''
+        password: ''
     })
 
     const showAlert = (error) => {
@@ -21,10 +20,13 @@ const SignUp = () => {
         }
     }
 
-    const sendData = (date) => {
+    const sendData = () => {
         navigate("/")
+        const current = new Date();
+        const date = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`;
+        const time = `${current.getHours()}:${current.getMinutes()}:${current.getSeconds()}`
         axios.post('https://server-production-8787.up.railway.app/api/insert', 
-        {userData, date}).then(() => {
+        {userData, date, time}).then(() => {
             window.alert("Succesfully signed up!")
         })
     }
@@ -34,9 +36,7 @@ const SignUp = () => {
             if (resp.data.some(el => el.email === userData.email)) {
                 showAlert("email")
             } else {
-                var today = new Date(),
-                date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-                sendData(date)
+                sendData()
             }
         })
     }

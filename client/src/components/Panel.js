@@ -5,7 +5,6 @@ const Panel = () => {
     const [elements, setElements] = React.useState([])
 
     const getUsers = () => {
-        const i=[]
         axios.get('https://server-production-8787.up.railway.app/api/get').then(resp => {
             setElements(resp.data)
         })
@@ -23,8 +22,8 @@ const Panel = () => {
                     <th scope="col">#</th>
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>
-                    <th scope="col">Registration date</th>
-                    <th scope="col">Last login</th>
+                    <th scope="col">Registration</th>
+                    <th scope="col">Login</th>
                     <th scope="col">Status</th>
                     </tr>
                 </thead>
@@ -35,8 +34,8 @@ const Panel = () => {
                                 <th scope="row">{user.id}</th>
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
-                                <td>{user.regDate}</td>
-                                <td>{user.lastDate}</td>
+                                <td>{user.regDate} {user.regTime}</td>
+                                <td>{user.loginTime} {user.loginTime}</td>
                                 <td>{user.status ? "blocked" : "not blocked"}</td>
                             </tr>
                         )

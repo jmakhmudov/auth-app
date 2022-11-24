@@ -28,9 +28,10 @@ app.post('/api/delete', (req, res) => {
 app.post('/api/insert', (req, res) => {
   const u = req.body.userData
   const date = req.body.date
-  const i = "INSERT INTO users (name, email, password,regDate, lastDate) VALUES (?,?,?,?,?);"
+  const time = req.body.time
+  const i = "INSERT INTO users (name, email, password,regDate, regTime, loginDate, loginTime) VALUES (?,?,?,?,?,?,?);"
 
-  db.query(i, [u.name, u.email, u.password, date, date], (err, result) => {
+  db.query(i, [u.name, u.email, u.password, date, time, date, time], (err, result) => {
     console.log(err)
   })
 })
