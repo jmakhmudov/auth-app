@@ -3,6 +3,7 @@ import axios from "axios"
 
 const Panel = () => {
     const [elements, setElements] = React.useState([])
+    const [refresh, setRefresh] = React.useState(false)
 
     const getUsers = () => {
         axios.get('https://server-production-8787.up.railway.app/api/get').then(resp => {
@@ -12,10 +13,11 @@ const Panel = () => {
 
     React.useEffect(() => {
         getUsers()
-    },[1])
+    },[refresh])
 
     return (
         <div>
+            <button onClick={() => {setRefresh(prev=> !prev)}}>Refresh</button>
             <table className="table">
                 <thead className="thead-dark">
                     <tr>
