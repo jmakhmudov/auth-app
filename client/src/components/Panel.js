@@ -5,7 +5,6 @@ import '../styles/App.css'
 const Panel = () => {
     const [elements, setElements] = React.useState([])
     const [selected, setSelected] = React.useState([])
-    const [refresh, setRefresh] = React.useState(false)
     const ids = []
 
     const getUsers = () => {
@@ -16,11 +15,13 @@ const Panel = () => {
     
     const deleteUser = () => {
         axios.post('https://server-production-8787.up.railway.app/api/delete', {selected})
+        setElements(prev=>prev)
     }
 
     const blockUser = () => {
-        const val = 0
-        axios.post('https://server-production-8787.up.railway.app/api/delete', {val,selected})
+        const val = 1
+        axios.post('https://server-production-8787.up.railway.app/api/block', {val,selected})
+        setElements(prev=>prev)
     }
 
     const selectCheckbox = (e) => {
@@ -47,17 +48,17 @@ const Panel = () => {
             }
         })
     }
-    console.log(selected)
+    
     React.useEffect(() => {
         getUsers()
-    },[1])
+    },[elements])
 
     return (
         <div className="panel">
             <nav className="navbar">
                 <button className="btn btn-primary" type="button">Search</button>
-                <p onClick={deleteUser}>Delete</p>
-                <p onClick={blockUser}>Block</p>
+                <button onClick={deleteUser}>Delete</button>
+                <button onClick={blockUser}>Block</button>
             </nav>
 
             <table className="table">
