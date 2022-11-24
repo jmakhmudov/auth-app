@@ -25,6 +25,7 @@ const SignUp = () => {
         const current = new Date();
         const date = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`;
         const time = `${current.getHours()}:${current.getMinutes()}:${current.getSeconds()}`
+        console.log(time)
         axios.post('https://server-production-8787.up.railway.app/api/insert', 
         {userData, date, time}).then(() => {
             window.alert("Succesfully signed up!")

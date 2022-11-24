@@ -29,7 +29,7 @@ app.post('/api/insert', (req, res) => {
   const u = req.body.userData
   const date = req.body.date
   const time = req.body.time
-  const i = "INSERT INTO users (name, email, password,regDate, regTime, loginDate, loginTime) VALUES (?,?,?,?,?,?,?);"
+  const i = "INSERT INTO users (name, email, password,regDate, regTime, loginDate, loginTime, blocked) VALUES (?,?,?,?,?,?,?, 0);"
 
   db.query(i, [u.name, u.email, u.password, date, time, date, time], (err, result) => {
     console.log(err)
