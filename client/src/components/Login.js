@@ -32,7 +32,7 @@ const Login = () => {
         const current = new Date();
         const date = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`;
         const time = `${current.getHours()}:${current.getMinutes()}`
-        logingIn(date, time, id)
+        logingIn(date, time)
     }
 
     const logingIn = (date, time) => {
@@ -41,7 +41,7 @@ const Login = () => {
         const val = date
         const col2 = 'loginTime'
         const val2 = time
-        axios.get('https://server-production-8787.up.railway.app/api/update', {col, val, col2, val2})
+        axios.post('https://server-production-8787.up.railway.app/api/update', {col, val, col2, val2, id})
         setEnter(true)
 
     }
