@@ -18,8 +18,10 @@ const db = mySql.createPool({
 
 app.get('/api/update', (req, res) => {
   const c = req.body.col
+  const c1 = req.body.col2
   const v = req.body.val
-  const u = `update users set ${c}=${val}`
+  const v2 = req.body.val2
+  const u = `update users set ${c}=${val} and ${col2}=${val2}`
 
   db.query(u, (err, result) => {
     console.log(err)

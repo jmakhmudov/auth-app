@@ -14,11 +14,29 @@ const Login = () => {
            resp.data.some(
             e => e.email === email && 
             e.password === password && e.blocked !== '1') 
-           ? setEnter(true)
+           ? getDateTime()
            : showAlert("login")
         }).catch(e => {
             console.log(e);
         })
+    }
+
+    const getDateTime = () => {
+        const current = new Date();
+        const date = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`;
+        const time = `${current.getHours()}:${current.getMinutes()}`
+        logingIn(date, time)
+    }
+
+    const logingIn = (date, time) => {
+        
+        const col = 'loginDate'
+        const val = date
+        const col2 = 'loginTime'
+        const val2 = time
+        axios.get('https://server-production-8787.up.railway.app/api/update', {col, val, col2, val2})
+        setEnter(true)
+
     }
 
     const showAlert = (error) => {
