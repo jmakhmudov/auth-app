@@ -31,11 +31,12 @@ app.post('/api/update', (req, res) => {
 })
 
 app.post('/api/delete', (req, res) => {
-  const id = req.body.id
+  const ids = req.body.selected
   const d = "DELETE FROM users WHERE id=?;"
-
-  db.query(d, id, (err, result) => {
-    console.log(err)
+  ids.map(id => {
+    db.query(d, id, (err, result) => {
+      console.log(err)
+    })
   })
 })
 
@@ -47,6 +48,18 @@ app.post('/api/insert', (req, res) => {
 
   db.query(i, [u.name, u.email, u.password, date, time, date, time], (err, result) => {
     console.log(err)
+  })
+})
+
+app.post('/api/block', (req, res) => {
+  const val = req.body.val
+  const ids = req.body.selected
+  const b = `update users set blocked=${val} where id=?`
+  
+  ids.map(id => {
+    db.query(b, id, (err, result) => {
+      console.log(err)
+    })
   })
 })
 

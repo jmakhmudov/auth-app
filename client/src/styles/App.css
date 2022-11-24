@@ -24,4 +24,23 @@
 
 .table {
     width: 1000px;
+    margin-top: 100px;
+}
+
+.panel {
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.navbar {
+    position: absolute;
+    width: 100vw;
+    top: 0;
+    right: 0;
+    left: 0;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(84, 84, 84, 0.223);
 }

@@ -3,9 +3,8 @@ import axios from 'axios'
 import { useNavigate } from "react-router-dom"
 import Panel from "./Panel"
 
-const Login = () => {
+const Login = (props) => {
     const navigate = useNavigate()
-    const [enter, setEnter] = React.useState(false)
     const [email, setEmail] = React.useState('')
     const [password, setPassword] = React.useState('')
     let id = 0
@@ -42,7 +41,7 @@ const Login = () => {
         const col2 = 'loginTime'
         const val2 = time
         axios.post('https://server-production-8787.up.railway.app/api/update', {col, val, col2, val2, id})
-        setEnter(true)
+        props.setPanel(true)
 
     }
 
@@ -56,9 +55,6 @@ const Login = () => {
 
     return (
         <div>
-            {
-                enter ?
-                <Panel/> :
                 <div className="login-box">
                     <h1>Log In</h1>
                     <div style={{display:'none'}} id="alert" className="alert alert-danger" role="alert">
@@ -94,7 +90,6 @@ const Login = () => {
                         <small id="emailHelp" className="form-text text-muted">Don't have an account? <span onClick={()=>{navigate("/signup")}}>Register</span></small>
                     </form>
                 </div>
-            }
         </div>
     )
 }
