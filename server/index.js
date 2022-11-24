@@ -16,7 +16,7 @@ const db = mySql.createPool({
   port: "6166"
 })
 
-app.get('/api/update', (req, res) => {
+app.post('/api/update', (req, res) => {
   const id = req.body.id
   const c = req.body.col
   const c2 = req.body.col2
