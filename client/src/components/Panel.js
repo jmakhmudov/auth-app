@@ -34,8 +34,8 @@ const Panel = () => {
                                 <th scope="row">{user.id}</th>
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
-                                <td>{user.regDate} {user.regTime}</td>
-                                <td>{user.loginTime} {user.loginTime}</td>
+                                <td>{user.regDate}, {user.regTime}</td>
+                                <td>{user.loginDate}, {user.loginTime}</td>
                                 <td>{user.status ? "blocked" : "not blocked"}</td>
                             </tr>
                         )
