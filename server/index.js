@@ -71,6 +71,15 @@ app.get('/api/get', (req, res) => {
   })
 })
 
+app.get('/api/user', (req, res) => {
+  const id = req.body.id
+  db.query("select * from users where id=?",id, (err, result) => {
+    console.log(result)
+    console.log(err)
+    res.send(result)
+  })
+})
+
 app.listen(PORT, () => {
   console.log("runing on port " + PORT)
 })
