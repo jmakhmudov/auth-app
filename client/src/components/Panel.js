@@ -72,51 +72,53 @@ const Panel = (props) => {
 
             {logout ? window.location.reload() :
                 <div className="panel">
-                <div className="toolbar">
-                    <div className="block">
-                        <img src="./block.png" onClick={() => {blockUser(1)}} />
-                    </div>
-                    <div className="unblock">
-                        <img src="./unblock.png" onClick={() => {blockUser(0)}} />
-                    </div>
-                    <div className="delete">
-                        <img src="./remove.png" onClick={deleteUser} />
-                    </div>
-                </div>
+                    <div className="box">
+                        <div className="toolbar">
+                            <div className="block">
+                                <img src="./block.png" onClick={() => {blockUser(1)}} />
+                            </div>
+                            <div className="unblock">
+                                <img src="./unblock.png" onClick={() => {blockUser(0)}} />
+                            </div>
+                            <div className="delete">
+                                <img src="./remove.png" onClick={deleteUser} />
+                            </div>
+                        </div>
 
-                <table className="table table-striped">
-                    <thead className="thead">
-                        <tr>
-                            <th>
-                                <input onChange={selectAll} id="all" className="checkbox" type="checkbox" />
-                            </th>
-                            <th scope="col">Id</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Registration</th>
-                            <th scope="col">Login</th>
-                            <th scope="col">Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {elements.map(user => {
-                            ids.push(JSON.stringify(user.id))
-                            return (
+                        <table className="table table-striped">
+                            <thead className="thead">
                                 <tr>
                                     <th>
-                                        <input onChange={selectCheckbox} id={user.id} className="checkbox" type="checkbox" />
+                                        <input onChange={selectAll} id="all" className="checkbox" type="checkbox" />
                                     </th>
-                                    <th scope="row">{user.id}</th>
-                                    <td>{user.name}</td>
-                                    <td>{user.email}</td>
-                                    <td>{user.regDate}, {user.regTime}</td>
-                                    <td>{user.loginDate}, {user.loginTime}</td>
-                                    <td>{user.blocked==='1' ? "Blocked" : "Active"}</td>
+                                    <th scope="col">Id</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Registration</th>
+                                    <th scope="col">Login</th>
+                                    <th scope="col">Status</th>
                                 </tr>
-                            )
-                        })}
-                    </tbody>
-                </table>
+                            </thead>
+                            <tbody>
+                                {elements.map(user => {
+                                    ids.push(JSON.stringify(user.id))
+                                    return (
+                                        <tr>
+                                            <th>
+                                                <input onChange={selectCheckbox} id={user.id} className="checkbox" type="checkbox" />
+                                            </th>
+                                            <th scope="row">{user.id}</th>
+                                            <td>{user.name}</td>
+                                            <td>{user.email}</td>
+                                            <td>{user.regDate}, {user.regTime}</td>
+                                            <td>{user.loginDate}, {user.loginTime}</td>
+                                            <td>{user.blocked==='1' ? "Blocked" : "Active"}</td>
+                                        </tr>
+                                    )
+                                })}
+                            </tbody>
+                        </table>
+                    </div>
             </div>}
         </div>
     )
