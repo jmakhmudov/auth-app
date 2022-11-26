@@ -16,9 +16,9 @@ const Panel = (props) => {
     }
 
     const checkUser = () => {
-        const id = props.id
+        const id = JSON.stringify(props.id)
         axios.get('https://server-production-8787.up.railway.app/api/user', id).then(resp => {
-            resp.data.blocked == 0 || resp.data ? setLogout(false) : setLogout(true)
+            resp.data.blocked == 0 && resp.data ? setLogout(false) : setLogout(true)
         })
     }
     
