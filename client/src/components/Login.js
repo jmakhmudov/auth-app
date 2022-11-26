@@ -14,6 +14,7 @@ const Login = (props) => {
         axios.get('https://server-production-8787.up.railway.app/api/get').then(resp => {
            resp.data.some(
             e => {
+                props.setId(e.id)
                 id = e.id
                 return (
                 e.email === email && 

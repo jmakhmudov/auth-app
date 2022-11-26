@@ -11,14 +11,15 @@ import {
 
 const App = () => {
   const [panel, setPanel] = React.useState(false)
+  const [id, setId] = React.useState('')
 
 
   return (
     <Router>
-      {panel ? <Panel/>:
+      {panel ? <Panel id={id}/>:
       <div className="App">
         <Routes>
-          <Route path="/" element={<Login setPanel={setPanel}/>}/>
+          <Route path="/" element={<Login setPanel={setPanel} setId={setId}/>}/>
           <Route path="/signup" element={<SignUp />}/>
         </Routes>
       </div>}
