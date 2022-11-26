@@ -20,11 +20,13 @@ const Panel = (props) => {
         axios.get('https://server-production-8787.up.railway.app/api/get').then(resp => {
             resp.data.some(user => {
                 if (user.id==props.id) {
-                    user.blocked == 1 ? setLogout(true) : setLogout(false)
+                    user.blocked === '1' ? setLogout(true) : setLogout(false)
                     n = true
                 }
             })
-            n ? setLogout(false) : setLogout(true)
+            if (!n) {
+                setLogout(true)
+            }
         })
     }
     
